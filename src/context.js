@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { storeProducts, detailProduct } from './data'
+import { storeProducts } from './data'
 
 const AppContext = React.createContext();
 // Provider
@@ -107,7 +107,7 @@ const AppProvider = ({children}) => {
 
   useEffect(() => {
     addTotals();
-  }, [cart])
+  }, [cart, addTotals])
 
   return (
     <AppContext.Provider value={{products, singleProduct, handleDetail, addToCart, cart, modalProduct, isModalOpen, openModal, closeModal, increase, decrease, removeItem, clearCart, cartSubTotal, cartTax, cartTotal}}>

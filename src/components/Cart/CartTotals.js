@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useGlobalContext}  from '../../context';
+import  PayPalButton  from './PayPalButton';
 
 function CartTotals() {
   const { cartSubTotal, cartTax, cartTotal, clearCart } = useGlobalContext();
@@ -29,7 +30,7 @@ function CartTotals() {
               <span>Total: </span>
               <strong>$ {cartTotal}</strong>
             </h5>
-            
+            <PayPalButton total={cartTotal} clearCart={clearCart}></PayPalButton>
           </div>
         </div>
       </div>
