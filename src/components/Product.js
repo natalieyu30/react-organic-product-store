@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-function Product({id, title, img, price, inCart}) {
+function Product(product) {
   const { handleDetail, addToCart,  openModal} = useGlobalContext();
+  const {id, title, img, price, inCart} = product;
+  // console.log(img)
   return (
     <ProductWrapper className='col-9 mx-auto col-md-6 col-lg-3 my-3'>
       <div className="card">

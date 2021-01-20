@@ -1,5 +1,14 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { storeProducts } from './data'
+import React, { useState, useEffect, useContext, useCallback } from 'react';
+import { storeProducts } from './data';
+
+// const getLocalStorage = () => {
+//   let localCart = localStorage.getItem('cart');
+//   if (localCart) {
+//     return JSON.parse(localStorage.getItem('cart'))
+//   } else {
+//     return []
+//   }
+// }
 
 const AppContext = React.createContext();
 // Provider
@@ -58,14 +67,6 @@ const AppProvider = ({children}) => {
     product.count = product.count +1;
     product.total = product.count * product.price;
     setCart([...tempCart])
-    // let tempCart = cart.map(item => {
-    //   if (item.id === id) {
-    //     return {...item, count: item.count + 1, total: item.price * (item.count+1)}
-    //   } else {
-    //     return {...item}
-    //   }
-    // })
-    // setCart(tempCart)
   }
 
   const decrease = (id) => {
@@ -96,14 +97,18 @@ const AppProvider = ({children}) => {
     mainProducts()
   } 
 
-  const addTotals = () => {
+  const addTotals = useCallback(() => {
     let subTotal = 0;
     cart.map(item => subTotal += item.total);
-    setCartSubTotal(subTotal);
+    setCartSubTotal(subTotal.toFixed(2));
     const tempTax = parseFloat((subTotal * 0.13).toFixed(2));
     setCartTax(tempTax);
     setCartTotal((subTotal + tempTax).toFixed(2));
-  }
+  }, [cart]) 
+
+  // useEffect(() => {
+  //   localStorage.setItem('cart', JSON.stringify(cart))
+  // }, [cart])
 
   useEffect(() => {
     addTotals();
