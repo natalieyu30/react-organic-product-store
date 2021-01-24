@@ -30,7 +30,7 @@ function CartItem({id, title, price, img, total, count}) {
         </span>
       </div>
       <div className="col-10 mx-auto col-lg-2">
-        <strong>Total : ${total}</strong>
+        <strong>Total : ${total.toFixed(2)}</strong>
       </div>
     </div>
   )
