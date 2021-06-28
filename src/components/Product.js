@@ -13,7 +13,9 @@ function Product(product) {
       <div className="card">
         <div className="img-container px-4 pt-5 pb-3" onClick={() => handleDetail(id)}>
           <Link to='/details'>
-            <img src={img} alt="product" className='card-img-top'/>
+            <div className="img-wrapper">
+              <img src={img} alt="product" className='card-img-top'/>
+            </div>
           </Link>
           <button 
             className="cart-btn" 
@@ -64,7 +66,6 @@ const ProductWrapper = styled.div`
   }
   &:hover {
     .card {
-      border: 2px solid var(--transGreen);
       box-shadow: 2px 2px 5px 0px var(--transGreen);
     }
     .card-footer {
@@ -75,13 +76,16 @@ const ProductWrapper = styled.div`
     position: relative;
     overflow: hidden;
   }
+  .img-wrapper {
+    overflow: hidden;
+  }
   .card-img-top {
     width: 100%;
     height: 170px;
     transition: all 0.4s linear;
   }
   .img-container:hover .card-img-top {
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
   }
   .cart-btn {
     position: absolute;
