@@ -76,8 +76,8 @@ const ProductWrapper = styled.div`
     overflow: hidden;
   }
   .card-img-top {
-    // width: 100%;
-    // hegith: 100%;
+    width: 100%;
+    height: 170px;
     transition: all 0.4s linear;
   }
   .img-container:hover .card-img-top {
